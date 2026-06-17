@@ -1,5 +1,15 @@
 @import-normalize
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 :root {
+   --font-family: "Poppins", sans-serif;
+   --yellow: #ffb627;
+	--icon-violet: #734aef;
+	--white: #fbfbfb;
+	--white-400: rgba(255, 255, 255, 0.4);
+	--white-600: rgba(255, 255, 255, 0.6);
+	--text-button: #623f8b;
+	--dashboard-text: #ff868d;
+	--form-color: rgba(255, 255, 255, 0.1);
   /* --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -57,7 +67,7 @@ body {
 }
 
 #root {
-  width: 1126px;
+  /* width: 1126px; */
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
