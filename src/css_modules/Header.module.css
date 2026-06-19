@@ -6,6 +6,10 @@
   box-shadow:
     0 4px 40px 0 rgba(0, 0, 0, 0.25),
     inset 0 -3px 2px 0 rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    height: 70px;
+  }
 }
 .logo_div {
   position: absolute;
@@ -16,6 +20,16 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+
+  @media (max-width: 1200px) {
+    left: 32px;
+  }
+
+  @media (max-width: 768px) {
+    gap: 6px;
+    left: 20px;
+    top: 12px;
+  }
 }
 /* .logo_div:hover{
     src: url(../images/logo_hover_1x.png);
@@ -28,31 +42,68 @@
   font-weight: 400;
   font-size: 17px;
   color: var(--white);
+  transition: color 0.3s ease;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 }
+
+.logo_text_hover {
+    color: gold; 
+}
+
 .big_exit_div {
   position: absolute;
   right: 16px;
-  top: 26px;
+  top: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
+
+  @media (max-width: 1200px) {
+    right: 32px;
+  }
+
+  @media (max-width: 768px) {
+    right: 20px;
+    top: 28px;
+    gap: 8px;
+  }
 }
 .exit_div {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.exit_text {
+
+.exit_text_name {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
   text-align: right;
   color: var(--white-600);
 }
+
+.exit_text_exit {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  text-align: right;
+  color: var(--white-600);
+
+    @media (max-width: 768px) {
+    display: none;
+  }
+}
 .exit_div::before {
-    content: '';
+  content: "";
   width: 1px;
   height: 30px;
   background-color: var(--white-600);
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }

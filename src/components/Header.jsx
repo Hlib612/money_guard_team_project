@@ -1,28 +1,51 @@
-// nут має бути імпорт з форми регістра де import name from './FormRegister.jsx'
+
 import css from '../css_modules/Header.module.css'
 import logo1x from '../images/logo_1x.png'
 import logo2x from '../images/logo_2x.png'
 import exit1x from '../images/exit_1x.png'
 import exit2x from '../images/exit_2x.png'
+import logo_hover_1x from '../images/logo_hover_1x.png'
+import logo_hover_2x from '../images/logo_hover_2x.png'
+import HeaderHover from './HeaderHover'
+import { useState } from 'react'
 
-// Logout icon — white rectangle with right-pointing arrow"  srcSet='logo1x 1x, logo2x 2x'
-export default function Header(){
+export default function Header() {
+    const [hover, setHover] = useState(false);
 
-    return(
-        <>
+    const handleClick = () => {
+        window.location.reload(); // перезавантажує сторінку
+    };
+
+    return (
         <header className={css.header}>
-            <div className={css.logo_div}>
-                <img className={css.logo_img} src={logo1x} alt="Stylized gold shield above white chevrons" srcSet={`${logo1x} 1x, ${logo2x} 2x`} />
-                <p className={css.logo_text}>Money Guard</p>
+            <div 
+                className={css.logo_div}
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+                onClick={handleClick}
+            >
+                <HeaderHover 
+                    dlogo1x={logo1x} 
+                    dlogo2x={logo2x} 
+                    hlogo1x={logo_hover_1x} 
+                    hlogo2x={logo_hover_2x} 
+                    hover={hover}
+                />
+                <p className={`${css.logo_text} ${hover ? css.logo_text_hover : ''}`}>
+                    Money Guard
+                </p>
             </div>
             <div className={css.big_exit_div}>
-                <p className={css.exit_text}>Name</p>
+                <p className={css.exit_text_name}>Name</p>
                 <div className={css.exit_div}>
-                    <img src={exit1x} alt="#" srcSet={`${exit1x} 1x, ${exit2x} 2x`}/>
-                    <p className={css.exit_text}>Exit</p>
+                    <img 
+                        src={exit1x} 
+                        alt="Logout icon" 
+                        srcSet={`${exit1x} 1x, ${exit2x} 2x`} 
+                    />
+                    <p className={css.exit_text_exit}>Exit</p>
                 </div>
             </div>
         </header>
-        </>
     )
 }
