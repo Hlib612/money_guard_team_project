@@ -1,7 +1,8 @@
 @import-normalize
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Poppins:wght@400;600;700&display=swap');
 :root {
    --font-family: "Poppins", sans-serif;
+   --second-family: "Montserrat", sans-serif;
    --yellow: #ffb627;
 	--icon-violet: #734aef;
 	--white: #fbfbfb;
@@ -64,10 +65,10 @@
 
 body {
   margin: 0;
+  background-color: #101010;
 }
 
-#root {
-  /* width: 1126px; */
+/* #root {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -76,8 +77,13 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+} */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
+/* 
 h1,
 h2 {
   font-family: var(--heading);
@@ -98,7 +104,7 @@ h2 {
   font-size: 24px;
   line-height: 118%;
   letter-spacing: -0.24px;
-  margin: 0 0 8px;
+  margin: 0 0 0px;
   @media (max-width: 1024px) {
     font-size: 20px;
   }
@@ -120,19 +126,4 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
-}
-
-.container{
-      width: 320px;
-      padding: 0 15px;
-      margin: 0 auto;
-      @media screen and (min-width: 480px) {
-            width: 480px;
-      }
-      @media screen and (min-width: 768px) {
-          width: 768px;
-        }
-      @media screen and (min-width: 1200px) {
-          width: 1200px;
-      }
-    }
+} */
