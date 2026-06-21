@@ -1,0 +1,152 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 11;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 540px;
+  height: 512px;
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background-color: var(--form-color);
+  border-radius: 8px;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  overflow: hidden;
+}
+
+.openBtn {
+  position: absolute;
+  right: 40px;
+  bottom: 42px;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* напівпрозорий чорний */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 8; /* щоб було поверх контенту */
+  backdrop-filter: blur(7px);
+  background: rgba(34, 13, 91, 0.23);
+}
+
+/* .gradientEllipse {
+  position: absolute;
+  top: 220px;
+  left: 220px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    circle,
+    rgba(47, 21, 176, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: 12; 
+  border-radius: 100%;
+  pointer-events: none; 
+} */
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  width: 18px;
+  height: 18px;
+}
+.closeImg {
+  width: 16px;
+  height: 16px;
+}
+.headline {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 30px;
+  color: var(--white);
+}
+.switchDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.circleDiv {
+  width: 44px;
+  height: 44px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--yellow);
+  box-shadow: 0 6px 15px 0 rgba(255, 199, 39, 0.5);
+}
+.circleImg {
+  width: 20px;
+  height: 20px;
+}
+.income {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--white-600);
+}
+.expence {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--white-600);
+}
+.inputDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+.input {
+  background-color: none;
+}
+.addBtn {
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  background: linear-gradient(
+    167deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--white);
+}
+.cancelBtn {
+  border-radius: 20px;
+  width: 300px;
+  height: 50px;
+  background: var(--white);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text-button);
+}
