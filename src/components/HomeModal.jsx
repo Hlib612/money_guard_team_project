@@ -7,6 +7,10 @@ const [isVisible, setIsVisible] = useState(false)
     const toggleModal = () =>{
         setIsVisible(!isVisible)
     }
+
+    // const inputHangle = (event) =>{
+
+    // }
     return(
         <>
         <button className={css.openBtn} onClick={toggleModal}>
@@ -32,12 +36,14 @@ const [isVisible, setIsVisible] = useState(false)
             </p>
         </div>
         <div className={css.inputDiv}>
-            <input className={css.input} type="number"/>
-            <input type="date" className={css.input}/>
+            <input className={css.moneyInput} type="text" placeholder="0.00"/>
+            <input type="date" className={css.dataInput}/>
         </div>
-        <input type="text" className={css.input}/>
+        <input type="text" className={css.commentInput} placeholder="Comment"/>
+        <div className={css.buttonDiv}>
         <button className={css.addBtn}>Add</button>
-        <button className={css.cancelBtn}>Cancel</button>
+        <button className={css.cancelBtn} onClick={toggleModal}>Cancel</button>
+        </div>
       </div>
       </div>
        )}
