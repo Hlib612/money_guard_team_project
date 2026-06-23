@@ -1,52 +1,126 @@
-import { useState } from "react"
-import css from '../css_modules/HomeModal.module.css'
-import closeSvg from'../images/close.svg'
-import circleSvg from'../images/circle.svg'
-export default function HomeModalTransaction({isOn}){
-const [isVisible, setIsVisible] = useState(false)
-    const toggleModal = () =>{
-        setIsVisible(!isVisible)
-    }
+import { useState } from "react";
+import css from "../css_modules/HomeModal.module.css";
+import closeSvg from "../images/close.svg";
+import circleSvg from "../images/circle.svg";
+export default function HomeModalTransaction({ isOn }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const [formData, setFormData] = useState({
+    money: '',
+    date: '',
+    comment: ''
+  });
+   const [type, setType] = useState('income');
+   const [transactions, setTransactions] = useState([]);
+  const toggleModal = () => {
+    setIsVisible(!isVisible);
+  };
+ 
+const toggleType = () => {
+  setType((prevType) => prevType === 'income' ? 'expense' : 'income');
+};
 
-    // const inputHangle = (event) =>{
+ const inputHandle = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-    // }
-    return(
-        <>
-        <button className={css.openBtn} onClick={toggleModal}>
+ const deleteTransaction = (id) => {
+    const updated = transactions.filter(t => t.id !== id);
+    setTransactions(updated);
+    localStorage.setItem('transactions', JSON.stringify(updated));
+  };
+
+  const addTransaction = () => {
+    const newTransaction = {
+      id: Date.now(),
+      ...formData,
+      type
+    };
+
+  const updatedTransactions = [...transactions, newTransaction];
+  setTransactions(updatedTransactions);
+  localStorage.setItem('transactions', JSON.stringify(updatedTransactions));
+   setFormData({ money: '', date: '', comment: '' });
+};
+
+  return (
+    <>
+    <table className={css.transactionsTable}>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Comment</th>
+      <th>Sum</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {transactions.map((t) => (
+      <tr key={t.id}>
+        <td>{t.date}</td>
+        <td>{t.type === 'income' ? '+' : '-'}</td>
+        <td>{t.comment}</td>
+        <td>{t.money}</td>
+        <td>
+          <button onClick={() => deleteTransaction(t.id)}>Delete</button>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+      <button className={css.openBtn} onClick={toggleModal}>
         <img src={circleSvg} alt="cross" />
       </button>
       {isVisible && (
-      <div className={css.backdrop} onClick={toggleModal}>
-        <div className={css.modal} onClick={(e) => e.stopPropagation()}>
+        <div className={css.backdrop} onClick={toggleModal}>
+          <div className={css.modal} onClick={(e) => e.stopPropagation()}>
             {/* <div className={css.gradientEllipse}></div> */}
-        <button className={css.closeBtn} onClick={toggleModal}><img src={closeSvg} alt="cross" className={css.closeImg}/></button>
-        <h2 className={css.headline}>Add transaction</h2>
-        <div className={css.switchDiv}>
-            <p className={css.income}>
-                Income
-            </p>
-            <button className={css.switchBtn}>
-                <div className={css.circleDiv}>
-                    <img src={circleSvg} alt="cross" className={css.circleImg}/>
-                </div>
+            <button className={css.closeBtn} onClick={toggleModal}>
+              <img src={closeSvg} alt="cross" className={css.closeImg} />
             </button>
-            <p className={css.expence}>
-                Expense
-            </p>
+            <h2 className={css.headline}>Add transaction</h2>
+            <div className={css.switchDiv}>
+              <p className={type === 'income' ? css.incomeActive : css.income}>Income</p>
+              <button className={css.switchBtn} onClick={toggleType}>
+                <div className={type === 'income' ? css.circleLeft : css.circleRight}>
+                  <img src={circleSvg} alt="cross" className={css.circleImg} />
+                </div>
+              </button>
+              <p className={type === 'expense' ? css.expenseActive : css.expense}>Expense</p>
+            </div>
+            <div className={css.inputDiv}>
+              <input
+                className={css.moneyInput}
+                type="text"
+                placeholder="0.00"
+                name="money"
+                value={formData.money}
+                onChange={inputHandle}
+              />
+              <input type="date" className={css.dataInput} name="date" value={formData.date} onChange={inputHandle}/>
+            </div>
+            <input
+              type="text"
+              className={css.commentInput}
+              placeholder="Comment"
+              name="comment"
+              value={formData.comment}
+              onChange={inputHandle}
+            />
+            <div className={css.buttonDiv}>
+              <button className={css.addBtn} onClick={addTransaction}>Add</button>
+              <button className={css.cancelBtn} onClick={toggleModal}>
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
-        <div className={css.inputDiv}>
-            <input className={css.moneyInput} type="text" placeholder="0.00"/>
-            <input type="date" className={css.dataInput}/>
-        </div>
-        <input type="text" className={css.commentInput} placeholder="Comment"/>
-        <div className={css.buttonDiv}>
-        <button className={css.addBtn}>Add</button>
-        <button className={css.cancelBtn} onClick={toggleModal}>Cancel</button>
-        </div>
-      </div>
-      </div>
-       )}
-        </>
-    )
+      )}
+    </>
+  );
 }
