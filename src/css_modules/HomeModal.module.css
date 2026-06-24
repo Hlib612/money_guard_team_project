@@ -17,6 +17,11 @@
     opacity 0.3s ease,
     visibility 0.3s ease;
   overflow: hidden;
+  gap: 40px;
+  @media (max-width: 768px) {
+    width: 320px;
+    height: 600px;
+  }
 }
 
 .openBtn {
@@ -67,6 +72,17 @@
   border: none;
   width: 18px;
   height: 18px;
+  transition-property: all;
+  transition-duration: 2000ms;
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+.closeBtn:hover {
+  transform: rotate(360deg);
+  transition-property: all;
+  transition-duration: 2000ms;
+  transition-timing-function: ease;
 }
 .closeImg {
   width: 16px;
@@ -77,6 +93,9 @@
   font-weight: 400;
   font-size: 30px;
   color: var(--white);
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 }
 .switchDiv {
   display: flex;
@@ -84,7 +103,30 @@
   align-items: center;
   gap: 20px;
 }
-.circleDiv {
+.switchBtn {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  border-radius: 30px;
+  border: none;
+}
+/* .circleDiv {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 44px;
+  height: 44px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--yellow);
+  box-shadow: 0 6px 15px 0 rgba(255, 199, 39, 0.5);
+} */
+.circleLeft{
+  position: absolute;
+  top: -1px;
+  left: -1px;
   width: 44px;
   height: 44px;
   border-radius: 100%;
@@ -94,9 +136,29 @@
   background-color: var(--yellow);
   box-shadow: 0 6px 15px 0 rgba(255, 199, 39, 0.5);
 }
+.circleRight{
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 44px;
+  height: 44px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dashboard-text);
+  box-shadow: 0 6px 15px 0 rgba(255, 134, 141, 0.5);
+}
 .circleImg {
   width: 20px;
   height: 20px;
+}
+.incomeActive {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  text-align: right;
+  color: var(--yellow);
 }
 .income {
   font-family: var(--font-family);
@@ -104,7 +166,13 @@
   font-size: 16px;
   color: var(--white-600);
 }
-.expence {
+.expenseActive {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--dashboard-text);
+}
+.expense {
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 16px;
@@ -115,9 +183,81 @@
   justify-content: center;
   align-items: center;
   gap: 32px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 40px;
+  }
 }
-.input {
-  background-color: none;
+.moneyInput {
+  width: 180px;
+  height: 35px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--white-400);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  color: var(--white-600);
+  @media (max-width: 768px) {
+    width: 280px;
+  }
+}
+.moneyInput::placeholder {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  color: var(--white-600);
+}
+.dataInput {
+  padding-left: 28px;
+  width: 180px;
+  height: 35px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--white-400);
+   font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--white);
+  @media (max-width: 768px) {
+    width: 280px;
+  }
+}
+.dataInput::placeholder {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--white);
+}
+.commentInput {
+  width: 394px;
+  height: 32px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--white-400);
+   font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--white-600);
+  @media (max-width: 768px) {
+    width: 280px;
+    height: 80px;
+  }
+}
+.commentInput::placeholder {
+  padding-left: 5px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--white-600);
+}
+.buttonDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
 }
 .addBtn {
   width: 300px;
@@ -136,6 +276,14 @@
   text-transform: uppercase;
   text-align: center;
   color: var(--white);
+  border: none;
+  @media (max-width: 768px) {
+    width: 280px;
+  }
+}
+.addBtn:hover {
+  animation-name: buttonHover;
+  animation-duration: 1s;
 }
 .cancelBtn {
   border-radius: 20px;
@@ -149,4 +297,58 @@
   text-transform: uppercase;
   text-align: center;
   color: var(--text-button);
+  border: none;
+  transition: all;
+  transition-duration: 1000ms;
+  @media (max-width: 768px) {
+    width: 280px;
+  }
+}
+.cancelBtn:hover {
+  background: #ff868d;
+  transition: all;
+  transition-duration: 1000ms;
+}
+
+@keyframes buttonHover {
+  0% {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 199, 39, 1) 0%,
+      rgba(158, 64, 186, 1) 61%,
+      rgba(112, 0, 255, 1) 91%
+    );
+  }
+  25% {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 199, 39, 1) 27%,
+      rgba(158, 64, 186, 1) 75%,
+      rgba(112, 0, 255, 1) 100%
+    );
+  }
+  50% {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 199, 39, 1) 40%,
+      rgba(158, 64, 186, 1) 87%,
+      rgba(112, 0, 255, 1) 100%
+    );
+  }
+  75% {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 199, 39, 1) 70%,
+      rgba(158, 64, 186, 1) 100%,
+      rgba(112, 0, 255, 1) 100%
+    );
+  }
+  100% {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 199, 39, 1) 100%,
+      rgba(158, 64, 186, 1) 100%,
+      rgba(112, 0, 255, 1) 100%
+    );
+  }
 }
