@@ -123,7 +123,7 @@
   background-color: var(--yellow);
   box-shadow: 0 6px 15px 0 rgba(255, 199, 39, 0.5);
 } */
-.circleLeft{
+.circleLeft {
   position: absolute;
   top: -1px;
   left: -1px;
@@ -136,7 +136,7 @@
   background-color: var(--yellow);
   box-shadow: 0 6px 15px 0 rgba(255, 199, 39, 0.5);
 }
-.circleRight{
+.circleRight {
   position: absolute;
   top: -1px;
   right: -1px;
@@ -217,7 +217,7 @@
   background: none;
   border: none;
   border-bottom: 1px solid var(--white-400);
-   font-family: var(--font-family);
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 18px;
   color: var(--white);
@@ -237,7 +237,7 @@
   background: none;
   border: none;
   border-bottom: 1px solid var(--white-400);
-   font-family: var(--font-family);
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 18px;
   color: var(--white-600);
@@ -351,4 +351,61 @@
       rgba(112, 0, 255, 1) 100%
     );
   }
+}
+
+.transactionsTable {
+  width: 716px;
+  /* height: 308px; */
+  height: auto;
+  border-collapse: collapse;
+}
+.transactionsTable th, 
+.transactionsTable td {
+  border: 1px solid #444;
+  padding: 8px;
+  text-align: center; /* вирівнювання по центру */
+}
+.transactionsThead {
+  border-radius: 8px;
+  width: 716px;
+  height: 56px;
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+background: rgba(82, 59, 126, 0.6);
+font-family: var(--font-family);
+font-weight: 600;
+font-size: 16px;
+color: var(--white);
+}
+/* .tr{
+  height: 46px;
+} */
+.td{
+  font-family: var(--font-family);
+font-weight: 400;
+font-size: 14px;
+color: var(--white);
+vertical-align: middle;
+}
+.pencilBtn{
+  margin-right: 8px;
+  background: none;
+  width: 14px;
+  height: 14px;
+}
+.pencilImg{
+  width: 14px;
+  height: 14px;
+}
+.delateBtn{
+  border-radius: 20px;
+padding: 4px 12px;
+width: 70px;
+height: 30px;
+box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+background: linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%);
+font-family: var(--font-family);
+font-weight: 400;
+font-size: 14px;
+text-align: center;
+color: var(--white);
 }
