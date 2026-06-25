@@ -15,7 +15,7 @@ const [isVisible, setIsVisible] = useState(false)
       {isVisible && (
       <div className={css.backdrop} onClick={toggleModal}>
         <div className={css.modal} onClick={(e) => e.stopPropagation()}>
-            {/* <div className={css.gradientEllipse}></div> */}
+            {}
         <button className={css.closeBtn} onClick={toggleModal}><img src={closeSvg} alt="cross" className={css.closeImg}/></button>
         <h2 className={css.headline}>Add transaction</h2>
         <div className={css.switchDiv}>

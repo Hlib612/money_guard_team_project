@@ -1,14 +1,22 @@
-import Header from "./components/header"
-import Home from "./components/Home"
-// import './App.css'
+import Header from "./components/Header"
+import Sidebar from "./components/Sidebar/Sidebar"
+import Statistics from "./components/Statistics/Statistics"
+import styles from "./css_modules/app.module.css"
 
 function App() {
-
   return (
-    <>
-    <Header/>
-    <Home/>
-    </>
+    <div className={styles.appBg}>
+      <div className={styles.extraShadow} />
+      <div className={styles.pageWrapper}>
+        <Header />
+        <div className={styles.layout}>
+          <Sidebar />
+          <main className={styles.main}>
+            <Statistics />
+          </main>
+        </div>
+      </div>
+    </div>
   )
 }
 
