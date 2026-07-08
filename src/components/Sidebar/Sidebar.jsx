@@ -2,19 +2,16 @@ import styles from './Sidebar.module.css'
 import homeIcon from '../../images/homeIcon.svg'
 import statsIcon from '../../images/statisticsIcon.svg'
 import SidebarWaves from './SidebarWaves'
+import Home from '../Home'
+import Statistics from '../Statistics/Statistics'
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <aside className={styles.sidebar}>
       <nav className={styles.nav}>
-        <a href="#" className={styles.navItem}>
-          <img src={homeIcon} alt="home" className={styles.navIcon} />
-          <span>Home</span>
-        </a>
-        <a href="#" className={`${styles.navItem} ${styles.navItemActive}`}>
-          <img src={statsIcon} alt="statistics" className={styles.navIcon} />
-          <span>Statistics</span>
-        </a>
+        <Link to="/home">Home</Link>
+        <Link to="/statistics">Statistics</Link>
       </nav>
 
       <div className={styles.balanceBlock}>
@@ -40,9 +37,18 @@ const Sidebar = () => {
         </div>
         <SidebarWaves />
       </div>
-
     </aside>
   )
 }
 
+
 export default Sidebar
+
+        // <a href="#" className={styles.navItem}>
+        //   <img src={homeIcon} alt="home" className={styles.navIcon} />
+        //   <span><Link to="/home">Home</Link></span>
+        // </a>
+        // <a href="#" className={`${styles.navItem} ${styles.navItemActive}`}>
+        //   <img src={statsIcon} alt="statistics" className={styles.navIcon} />
+        //   <span><Link to="/statistics">Statistics</Link></span>
+        // </a>

@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import css from "../css_modules/HomeModal.module.css";
 import closeSvg from "../images/close.svg";
 import circleSvg from "../images/circle.svg";
 import pencil1x from "../images/pencil1x.png";
 import pencil2x from "../images/pencil2x.png";
 import EditModal from "./EditModal";
+
 export default function HomeModalTransaction({ isOn }) {
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
@@ -16,6 +17,15 @@ export default function HomeModalTransaction({ isOn }) {
   const [transactions, setTransactions] = useState([]);
   const [editingTransaction, setEditingTransaction] = useState(null);
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+
+  // ✅ завантаження транзакцій при першому рендері
+  useEffect(() => {
+    const saved = localStorage.getItem("transactions");
+    if (saved) {
+      setTransactions(JSON.parse(saved));
+    }
+  }, []);
+
   const toggleModal = () => {
     setIsVisible(!isVisible);
   };
@@ -33,20 +43,18 @@ export default function HomeModalTransaction({ isOn }) {
   };
 
   const deleteTransaction = (id) => {
-    const updated = transactions.filter(t => t.id !== id);
+    const updated = transactions.filter((t) => t.id !== id);
     setTransactions(updated);
     localStorage.setItem("transactions", JSON.stringify(updated));
   };
 
-  // ✅ винесено окремо
   const startEdit = (transaction) => {
     setEditingTransaction(transaction);
     setIsEditModalVisible(true);
   };
 
-  // ✅ винесено окремо
   const handleEditSave = (updatedData) => {
-    const updatedTransactions = transactions.map(t =>
+    const updatedTransactions = transactions.map((t) =>
       t.id === editingTransaction.id ? { ...t, ...updatedData } : t
     );
     setTransactions(updatedTransactions);
@@ -112,17 +120,10 @@ export default function HomeModalTransaction({ isOn }) {
       <button className={css.openBtn} onClick={toggleModal}>
         <img src={circleSvg} alt="cross" />
       </button>
+
       {isVisible && (
-      <div className={css.backdrop} onClick={toggleModal}>
-        <div className={css.modal} onClick={(e) => e.stopPropagation()}>
-            {}
-        <button className={css.closeBtn} onClick={toggleModal}><img src={closeSvg} alt="cross" className={css.closeImg}/></button>
-        <h2 className={css.headline}>Add transaction</h2>
-        <div className={css.switchDiv}>
-            <p className={css.income}>
         <div className={css.backdrop} onClick={toggleModal}>
           <div className={css.modal} onClick={(e) => e.stopPropagation()}>
-            {/* <div className={css.gradientEllipse}></div> */}
             <button className={css.closeBtn} onClick={toggleModal}>
               <img src={closeSvg} alt="cross" className={css.closeImg} />
             </button>
@@ -182,12 +183,13 @@ export default function HomeModalTransaction({ isOn }) {
           </div>
         </div>
       )}
+
       <EditModal
-  isVisible={isEditModalVisible}
-  onClose={() => setIsEditModalVisible(false)}
-  transaction={editingTransaction}
-  onSave={handleEditSave}
-/>
+        isVisible={isEditModalVisible}
+        onClose={() => setIsEditModalVisible(false)}
+        transaction={editingTransaction}
+        onSave={handleEditSave}
+      />
     </>
   );
 }
