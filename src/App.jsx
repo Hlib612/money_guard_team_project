@@ -2,7 +2,7 @@ import Header from "./components/Header"
 import Sidebar from "./components/Sidebar/Sidebar"
 import Statistics from "./components/Statistics/Statistics"
 import styles from "./css_modules/app.module.css"
-
+import Home from "./components/Home"
 function App() {
   return (
     <div className={styles.appBg}>
@@ -13,6 +13,7 @@ function App() {
           <Sidebar />
           <main className={styles.main}>
             <Statistics />
+            <Home/>
           </main>
         </div>
       </div>
