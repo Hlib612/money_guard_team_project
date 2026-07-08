@@ -1,17 +1,24 @@
+
+import Header from "./components/Header"
+import Sidebar from "./components/Sidebar/Sidebar"
+import Statistics from "./components/Statistics/Statistics"
+import styles from "./css_modules/app.module.css"
+import Home from "./components/Home"
 import { useState } from "react";
-import Header from "./components/Header";
-import Home from "./components/Home";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
-
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [userName, setUserName] = useState("");
 
-  if (isLoggedIn) {
-    return (
-      <>
+   if (isLoggedIn) {
+  return (
+    <BrowserRouter basename="/money_guard_team_project">
+    <div className={styles.appBg}>
+      <div className={styles.extraShadow} />
+      <div className={styles.pageWrapper}>
         <Header
           userName={userName}
           onLogout={() => {
@@ -20,12 +27,24 @@ function App() {
             setUserName("");
           }}
         />
-        <Home />
-      </>
-    );
-  }
+        <div className={styles.layout}>
+          <Sidebar />
+          <main className={styles.main}>
+            <Routes>
+          {/* Редірект за замовчуванням на /statistics */}
+          <Route path="/" element={<Navigate replace to="/statistics" />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/statistics" element={<Statistics />} />
+        </Routes>
+          </main>
+        </div>
+      </div>
+    </div>
+    </BrowserRouter>
+  )
+}
 
-  return showRegister ? (
+ return showRegister ? (
     <RegisterForm
       onBack={() => setShowRegister(false)}
       onRegister={(name) => {

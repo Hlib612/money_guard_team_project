@@ -1,0 +1,11 @@
+[
+  { "id": "main_expenses",      "label": "Main expenses",      "color": "#FED057" },
+  { "id": "products",           "label": "Products",           "color": "#FFD8D0" },
+  { "id": "car",                "label": "Car",                "color": "#FD9498" },
+  { "id": "self_care",          "label": "Self care",          "color": "#C5BAFF" },
+  { "id": "child_care",         "label": "Child care",         "color": "#6E78E8" },
+  { "id": "household_products", "label": "Household products", "color": "#4A56E2" },
+  { "id": "education",          "label": "Education",          "color": "#81E1FF" },
+  { "id": "leisure",            "label": "Leisure",            "color": "#24CCA7" },
+  { "id": "other_expenses",     "label": "Other expenses",     "color": "#00AD84" }
+]
