@@ -1,0 +1,244 @@
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background-image: url("../assets/Gradient-register-forms.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .registerForm {
+    width: 540px;
+    padding: 60px 60px 45px;
+    border-radius: 8px;
+  
+
+
+  overflow: hidden;
+
+  
+    backdrop-filter: blur(50px);
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logoSvg {
+    margin-bottom: 15px;
+  }
+  
+  .logo {
+    margin-bottom: 45px;
+  
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    color: white;
+  }
+  
+  form {
+    width: 100%;
+  }
+  
+  .field {
+    display: flex;
+    align-items: center;
+  
+    border-bottom: 1px solid rgba(255,255,255,.4);
+    margin-bottom: 28px;
+    padding-bottom: 8px;
+  }
+  
+  .field svg {
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
+  
+  .input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+  
+    color: white;
+  
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .input::placeholder {
+    color: rgba(255,255,255,.4);
+  }
+  
+  .registerBtn {
+    width: 300px;
+    height: 50px;
+  
+    margin-top: 15px;
+  
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  
+    background: linear-gradient(90deg, #ffb627, #e850c0);
+    color: white;
+  
+    box-shadow: 1px 9px 15px 0px #00000033;
+  
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+  
+    transition: 0.3s;
+  }
+  
+  .registerBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(232, 80, 192, 0.45);
+  }
+  
+  .loginBtn {
+    width: 300px;
+    height: 50px;
+  
+    display: block;
+    margin: 0 auto;
+  
+    border: none;
+    border-radius: 20px;
+  
+    cursor: pointer;
+  
+    background: white;
+    color: #623f8b;
+  
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  
+    transition: .3s;
+  }
+  
+  .loginBtn:hover {
+    background: #f5f5f5;
+    transform: translateY(-3px);
+  }
+  
+  .error {
+    color: #ff4d4d;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .confirmField {
+    position: relative;
+  }
+  
+  .confirmField::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ffb627, white 70%);
+    transition: width .5s ease;
+  }
+  
+  .confirmField:focus-within::after {
+    width: 100%;
+  }
+  .field svg {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .wrapper {
+      padding: 30px;
+    }
+  
+    .registerForm {
+      width: 100%;
+      max-width: 480px;
+      padding: 40px;
+    }
+  
+    .logo {
+      margin-bottom: 35px;
+      font-size: 28px;
+    }
+  
+    .field {
+      margin-bottom: 24px;
+    }
+  
+    .field svg {
+      width: 22px;
+      height: 22px;
+      margin-right: 12px;
+    }
+  
+    .input {
+      font-size: 16px;
+    }
+  
+    .registerBtn {
+      width: 100%;
+      height: 48px;
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .wrapper {
+      padding: 20px;
+      align-items: center;
+    }
+  
+    .registerForm {
+      width: 100%;
+      max-width: 360px;
+      padding: 32px 20px;
+      border-radius: 20px;
+    }
+  
+    .logo {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+  
+    .field {
+      margin-bottom: 22px;
+      padding-bottom: 6px;
+    }
+  
+    .field svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+    }
+  
+    .input {
+      font-size: 16px;
+    }
+    .loginBtn ,
+    .registerBtn{
+      width: 100%;
+      height: 48px;
+      font-size: 16px;
+    }
+  
+    .loginBtn {
+      margin-top: 15px;
+    }
+  }
