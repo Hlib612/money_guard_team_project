@@ -4,15 +4,12 @@
       margin: 0 auto;
       @media screen and (min-width: 480px) {
             width: 448px;
-            border: 1px dashed red;
       }
       @media screen and (min-width: 768px) {
           width: 736px;
-          border: 1px dashed blue;
         }
       @media screen and (min-width: 1200px) {
           width: 1166px; 
-          border: 1px dashed green;
       }
     }
     /* width: 1168px;  має бути але так */

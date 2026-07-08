@@ -113,6 +113,13 @@ export default function HomeModalTransaction({ isOn }) {
         <img src={circleSvg} alt="cross" />
       </button>
       {isVisible && (
+      <div className={css.backdrop} onClick={toggleModal}>
+        <div className={css.modal} onClick={(e) => e.stopPropagation()}>
+            {}
+        <button className={css.closeBtn} onClick={toggleModal}><img src={closeSvg} alt="cross" className={css.closeImg}/></button>
+        <h2 className={css.headline}>Add transaction</h2>
+        <div className={css.switchDiv}>
+            <p className={css.income}>
         <div className={css.backdrop} onClick={toggleModal}>
           <div className={css.modal} onClick={(e) => e.stopPropagation()}>
             {/* <div className={css.gradientEllipse}></div> */}
