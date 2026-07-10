@@ -1,4 +1,6 @@
 .section{
-    position: relative;
     height: 720px;
+      @media (max-width: 1200px) {
+    padding-top: 20px;
+  }
 }

@@ -1,22 +1,48 @@
-import styles from './Sidebar.module.css'
-import homeIcon from '../../images/homeIcon.svg'
-import statsIcon from '../../images/statisticsIcon.svg'
-import SidebarWaves from './SidebarWaves'
-import Home from '../Home'
-import Statistics from '../Statistics/Statistics'
+import styles from "./Sidebar.module.css";
+import homeIcon from "../../images/homeIcon.svg";
+import homeIconHover from "../../images/homeIconHover.svg";
+import statsIcon from "../../images/statisticsIcon.svg";
+import SidebarWaves from "./SidebarWaves";
+import Home from "../Home";
+import Statistics from "../Statistics/Statistics";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const Sidebar = () => {
+const Sidebar = ({ balance }) => {
+  const [iconSrc, setIconSrc] = useState(`${homeIcon}`);
+
+  const handleHover = () => {
+    setIconSrc(`${homeIconHover}`);
+  };
+
+  const handleLeave = () => {
+    setIconSrc(`${homeIcon}`);
+  };
+
   return (
     <aside className={styles.sidebar}>
       <nav className={styles.nav}>
-        <Link to="/home">Home</Link>
-        <Link to="/statistics">Statistics</Link>
+        <div
+          className={`${styles.navDiv}`}
+          onMouseEnter={handleHover}
+          onMouseLeave={handleLeave}
+        >
+          <img src={iconSrc} alt="home" className={styles.navIcon} />
+          <Link to="/home" className={`${styles.navItem}`}>
+            Home
+          </Link>
+        </div>
+        <div className={`${styles.navDiv}`}>
+          <img src={statsIcon} alt="statistics" className={styles.navIcon} />
+          <Link to="/statistics" className={`${styles.navItem}`}>
+            Statistics
+          </Link>
+        </div>
       </nav>
 
       <div className={styles.balanceBlock}>
         <span className={styles.balanceLabel}>YOUR BALANCE</span>
-        <span className={styles.balanceAmount}>₴ 24 000.00</span>
+        <span className={styles.balanceAmount}>{balance}</span>
       </div>
 
       <div className={styles.formGraphic}>
@@ -38,17 +64,16 @@ const Sidebar = () => {
         <SidebarWaves />
       </div>
     </aside>
-  )
-}
+  );
+};
 
+export default Sidebar;
 
-export default Sidebar
-
-        // <a href="#" className={styles.navItem}>
-        //   <img src={homeIcon} alt="home" className={styles.navIcon} />
-        //   <span><Link to="/home">Home</Link></span>
-        // </a>
-        // <a href="#" className={`${styles.navItem} ${styles.navItemActive}`}>
-        //   <img src={statsIcon} alt="statistics" className={styles.navIcon} />
-        //   <span><Link to="/statistics">Statistics</Link></span>
-        // </a>
+// <a href="#" className={styles.navItem}>
+//   <img src={homeIcon} alt="home" className={styles.navIcon} />
+//   <span><Link to="/home">Home</Link></span>
+// </a>
+// <a href="#" className={`${styles.navItem} ${styles.navItemActive}`}>
+//   <img src={statsIcon} alt="statistics" className={styles.navIcon} />
+//   <span><Link to="/statistics">Statistics</Link></span>
+// </a>
