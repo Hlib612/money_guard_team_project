@@ -70,11 +70,4 @@ const Sidebar = ({ balance }) => {
 
 export default Sidebar;
 
-// <a href="#" className={styles.navItem}>
-//   <img src={homeIcon} alt="home" className={styles.navIcon} />
-//   <span><Link to="/home">Home</Link></span>
-// </a>
-// <a href="#" className={`${styles.navItem} ${styles.navItemActive}`}>
-//   <img src={statsIcon} alt="statistics" className={styles.navIcon} />
-//   <span><Link to="/statistics">Statistics</Link></span>
-// </a>
+

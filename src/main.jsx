@@ -8,7 +8,7 @@ import { store } from "./components/Redux/store";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/money_guard_team_project">
       <Provider store={store}>
         <App />
       </Provider>
