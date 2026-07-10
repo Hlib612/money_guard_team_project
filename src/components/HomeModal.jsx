@@ -6,17 +6,19 @@ import pencil1x from "../images/pencil1x.png";
 import pencil2x from "../images/pencil2x.png";
 import EditModal from "./EditModal";
 
-export default function HomeModalTransaction({ isOn }) {
+export default function HomeModalTransaction({ isOn, setBalance }) {
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
     money: "",
     date: "",
     comment: "",
+    category: "",
   });
   const [type, setType] = useState("income");
   const [transactions, setTransactions] = useState([]);
   const [editingTransaction, setEditingTransaction] = useState(null);
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+  const [category, setCategory] = useState("Income");
 
   // ✅ завантаження транзакцій при першому рендері
   useEffect(() => {
@@ -64,12 +66,29 @@ export default function HomeModalTransaction({ isOn }) {
   };
 
   const addTransaction = () => {
+    if (!formData.money || !formData.date || !formData.comment) {
+    alert("Feel all fields");
+    return;
+  }
     const newTransaction = { id: Date.now(), ...formData, type };
     const updatedTransactions = [...transactions, newTransaction];
     setTransactions(updatedTransactions);
     localStorage.setItem("transactions", JSON.stringify(updatedTransactions));
     setFormData({ money: "", date: "", comment: "" });
   };
+
+  const balance = transactions.reduce((total, transaction) => {
+    if (transaction.type === 'income') {
+      return total + transaction.money;
+    } else if (transaction.type === 'expense') {
+      return total - transaction.money;
+    }
+    return total;
+  }, 0);
+
+  useEffect(() => {
+    setBalance(balance);
+  }, [balance, setBalance]);
 
   return (
     <>
@@ -78,6 +97,7 @@ export default function HomeModalTransaction({ isOn }) {
           <tr>
             <th>Date</th>
             <th>Type</th>
+            <th>Category</th>
             <th>Comment</th>
             <th>Sum</th>
             <th></th>
@@ -88,6 +108,7 @@ export default function HomeModalTransaction({ isOn }) {
             <tr key={t.id} className={css.tr}>
               <td className={css.td}>{t.date}</td>
               <td className={css.td}>{t.type === "income" ? "+" : "-"}</td>
+              <td className={css.td}>{t.type === "income" ? "Income" : t.category}</td>
               <td className={css.td}>{t.comment}</td>
               <td
                 className={
@@ -147,6 +168,36 @@ export default function HomeModalTransaction({ isOn }) {
                 Expense
               </p>
             </div>
+            {type === "income" ? (
+  // Якщо Income — просто текст
+  <input
+    type="text"
+    value="Income"
+    readOnly
+    className={css.categoryInput}
+  />
+) : (
+  // Якщо Expense — випадаючий список категорій
+  <select
+    value={formData.category}
+    name="category"
+    onChange={inputHandle}
+    className={css.categorySelect}
+  >
+    <option value="">Select a category</option>
+    <option value="Main expenses">Main expenses</option>
+    <option value="Products">Products</option>
+    <option value="Car">Car</option>
+    <option value="Self care">Self care</option>
+    <option value="Child care">Child care</option>
+    <option value="Household products">Household products</option>
+    <option value="Education">Education</option>
+    <option value="Leisure">Leisure</option>
+    <option value="Other expenses">Other expenses</option>
+    <option value="Entertainment">Entertainment</option>
+    {/* додай свої категорії */}
+  </select>
+)}
             <div className={css.inputDiv}>
               <input
                 className={css.moneyInput}
@@ -155,6 +206,7 @@ export default function HomeModalTransaction({ isOn }) {
                 name="money"
                 value={formData.money}
                 onChange={inputHandle}
+                required
               />
               <input
                 type="date"
@@ -162,6 +214,7 @@ export default function HomeModalTransaction({ isOn }) {
                 name="date"
                 value={formData.date}
                 onChange={inputHandle}
+                required
               />
             </div>
             <input
@@ -171,6 +224,7 @@ export default function HomeModalTransaction({ isOn }) {
               name="comment"
               value={formData.comment}
               onChange={inputHandle}
+              required
             />
             <div className={css.buttonDiv}>
               <button className={css.addBtn} onClick={addTransaction}>

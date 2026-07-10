@@ -16,23 +16,30 @@
 }
 
 .navItem {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 20px; */
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
   color: #fbfbfb;
+  transition: all 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.navDiv{
+   display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.navItemActive {
+.navItem:hover {
   font-weight: 700;
   color: #ffffff;
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.navItemActive img {
+.navDiv:hover .navIcon {
   filter: drop-shadow(0 0 8px rgba(74, 86, 226, .9)) drop-shadow(0 0 12px rgba(74, 86, 226, .6));
 }
 

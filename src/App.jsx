@@ -12,6 +12,7 @@ function App() {
    const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [userName, setUserName] = useState("");
+  const [balance, setBalance] = useState(0);
 
    if (isLoggedIn) {
   return (
@@ -28,12 +29,12 @@ function App() {
           }}
         />
         <div className={styles.layout}>
-          <Sidebar />
+          <Sidebar balance={balance}/>
           <main className={styles.main}>
             <Routes>
           {/* Редірект за замовчуванням на /statistics */}
           <Route path="/" element={<Navigate replace to="/statistics" />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home setBalance={setBalance}/>} />
           <Route path="/statistics" element={<Statistics />} />
         </Routes>
           </main>
