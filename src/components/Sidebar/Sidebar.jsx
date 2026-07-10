@@ -1,8 +1,9 @@
-import styles from "./Sidebar.module.css";
-import homeIcon from "../../images/homeIcon.svg";
+
+import styles from './Sidebar.module.css'
+import homeIcon from '../../images/homeIcon1.svg'
+import statsIcon from '../../images/statisticsIcon2.svg'
+import SidebarWaves from './SidebarWaves'
 import homeIconHover from "../../images/homeIconHover.svg";
-import statsIcon from "../../images/statisticsIcon.svg";
-import SidebarWaves from "./SidebarWaves";
 import Home from "../Home";
 import Statistics from "../Statistics/Statistics";
 import { Link } from "react-router-dom";

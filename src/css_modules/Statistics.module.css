@@ -4,6 +4,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.mobileNavigation {
+  display: none;
+}
+
 .title {
   font-weight: 400;
   font-size: 30px;
@@ -141,7 +145,8 @@
 }
 
 .listWrapper {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .listHeader {
@@ -163,6 +168,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  overflow-y: auto;
 }
 
 .listRow {
@@ -223,7 +229,8 @@
 .totalLabel {
   font-weight: 600;
   font-size: 14px;
-  color: #fbfbfb;}
+  color: #fbfbfb;
+}
 
 .totalValue {
   margin-left: auto;
@@ -287,4 +294,137 @@
   .listTotals {
     padding: 16px 16px 0;
   }
+
+  .listWrapper {
+    height: 430px;
+  }
+
+  .listBody {
+    height: 280px;
+    overflow-y: auto;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767.98px) {
+
+  .title {
+    margin-left: 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .chartWrapper {
+    width: 280px;
+    height: 280px;
+  }
+
+  .chartWrapper canvas {
+    width: 280px !important;
+    height: 280px !important;
+  }
+
+  .rightPanel {
+    position: static;
+    width: 280px;
+    max-width: none;
+  }
+
+  .periodRow {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .dropdownWrapper {
+    width: 100%;
+  }
+
+  .dropdownTrigger {
+    width: 100%;
+  }
+
+  .listWrapper {
+    width: 100%;
+  }
+
+  .listHeader {
+    padding: 0 16px;
+  }
+
+  .listRow {
+    padding: 16px;
+  }
+
+  .listTotals {
+    padding: 16px 16px 0;
+  }
+
+  .mobileNavigation {
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    margin-bottom: 28px;
+  }
+
+  .mobileButton {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, .15);
+
+    transition: .2s;
+  }
+
+  .mobileButton img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .mobileButton:hover {
+    transform: scale(1.06);
+  }
+
+  .mobileButtonActive {
+    background: #734AEF;
+    box-shadow: 0 3px 12px rgba(115, 74, 239, .5);
+  }
+
+  button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  } 
+    .section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobileNavigation {
+    flex-shrink: 0;
+  }
+
+  .title {
+    flex-shrink: 0;
+  }
+
+  .currencyView {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+  }
+
 }

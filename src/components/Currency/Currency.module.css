@@ -1,0 +1,56 @@
+.formGraphic {
+  width: 100%;
+  height: 328px; /* подгони под свой макет, у меня примерно по пропорциям скрина */
+  display: flex;
+  flex-direction: column;
+  background: rgba(74, 86, 226, 0.1);
+  backdrop-filter: blur(50px);
+  box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.25);
+  overflow: hidden; /* теперь реально обрежет лишнюю высоту SidebarWaves */
+  position: relative;
+  filter: drop-shadow(1px 9px 15px rgba(0, 0, 0, 0.2));
+}
+
+.tableHeader,
+.tableRow {
+  box-sizing: border-box;
+  padding: 0 20px; /* убирает обрезание "Sale" */
+  flex-shrink: 0;
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fbfbfb;
+  z-index: 5;
+}
+
+.tableRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #fbfbfb;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wavesWrapper {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  width: 100%;
+}
+
+.wavesWrapper svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

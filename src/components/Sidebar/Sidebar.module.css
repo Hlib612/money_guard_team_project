@@ -148,9 +148,18 @@
   padding: 0 20px;
 }
 }
-@media screen and (min-width: 480px) and (max-width: 768px) {
-.sidebar {
-    border: none;
-    box-shadow: none;
+
+/* ─── Телефон ─────────────────────────────────────────────────────────── */
+
+@media screen and (max-width:767.98px) {
+  .formGraphic {
+    display: none;
+    z-index: -99;
+  }
+  .balanceBlock {
+    display: none;
+  }
+  .sidebar{
+    display: none;
   }
 }

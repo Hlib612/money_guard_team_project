@@ -1,0 +1,12 @@
+.waveLine {
+  stroke: #FF868D;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.point {
+  fill: #fff;
+  stroke: white;
+  stroke-width: 0;
+}
