@@ -1,0 +1,83 @@
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 11;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 540px;
+  height: 512px;
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background-color: var(--form-color);
+  border-radius: 8px;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  overflow: hidden;
+  gap: 40px;
+  @media (max-width: 768px) {
+    width: 320px;
+    height: 600px;
+  }
+}
+
+.buttonDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.addBtn {
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  background: linear-gradient(
+    167deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--white);
+  border: none;
+  @media (max-width: 768px) {
+    width: 280px;
+  }
+}
+.addBtn:hover {
+  animation-name: buttonHover;
+  animation-duration: 1s;
+}
+.cancelBtn {
+  border-radius: 20px;
+  width: 300px;
+  height: 50px;
+  background: var(--white);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text-button);
+  border: none;
+  transition: all;
+  transition-duration: 1000ms;
+  @media (max-width: 768px) {
+    width: 280px;
+  }
+}
+.cancelBtn:hover {
+  background: #ff868d;
+  transition: all;
+  transition-duration: 1000ms;
+}

@@ -1,25 +1,49 @@
+
 import styles from './Sidebar.module.css'
 import homeIcon from '../../images/homeIcon1.svg'
 import statsIcon from '../../images/statisticsIcon2.svg'
 import SidebarWaves from './SidebarWaves'
+import homeIconHover from "../../images/homeIconHover.svg";
+import Home from "../Home";
+import Statistics from "../Statistics/Statistics";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const Sidebar = () => {
+const Sidebar = ({ balance }) => {
+  const [iconSrc, setIconSrc] = useState(`${homeIcon}`);
+
+  const handleHover = () => {
+    setIconSrc(`${homeIconHover}`);
+  };
+
+  const handleLeave = () => {
+    setIconSrc(`${homeIcon}`);
+  };
+
   return (
     <aside className={styles.sidebar}>
       <nav className={styles.nav}>
-        <a href="#" className={styles.navItem}>
-          <img src={homeIcon} alt="home" className={styles.navIcon} />
-          <span>Home</span>
-        </a>
-        <a href="#" className={`${styles.navItem} ${styles.navItemActive}`}>
+        <div
+          className={`${styles.navDiv}`}
+          onMouseEnter={handleHover}
+          onMouseLeave={handleLeave}
+        >
+          <img src={iconSrc} alt="home" className={styles.navIcon} />
+          <Link to="/home" className={`${styles.navItem}`}>
+            Home
+          </Link>
+        </div>
+        <div className={`${styles.navDiv}`}>
           <img src={statsIcon} alt="statistics" className={styles.navIcon} />
-          <span>Statistics</span>
-        </a>
+          <Link to="/statistics" className={`${styles.navItem}`}>
+            Statistics
+          </Link>
+        </div>
       </nav>
 
       <div className={styles.balanceBlock}>
         <span className={styles.balanceLabel}>YOUR BALANCE</span>
-        <span className={styles.balanceAmount}>₴ 24 000.00</span>
+        <span className={styles.balanceAmount}>{balance}</span>
       </div>
 
       <div className={styles.formGraphic}>
@@ -40,9 +64,17 @@ const Sidebar = () => {
         </div>
         <SidebarWaves />
       </div>
-
     </aside>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
+
+// <a href="#" className={styles.navItem}>
+//   <img src={homeIcon} alt="home" className={styles.navIcon} />
+//   <span><Link to="/home">Home</Link></span>
+// </a>
+// <a href="#" className={`${styles.navItem} ${styles.navItemActive}`}>
+//   <img src={statsIcon} alt="statistics" className={styles.navIcon} />
+//   <span><Link to="/statistics">Statistics</Link></span>
+// </a>
