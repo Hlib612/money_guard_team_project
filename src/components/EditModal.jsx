@@ -26,12 +26,12 @@ const EditModal = ({ isVisible, onClose, transaction, onSave }) => {
     <div className={css.backdrop} onClick={onClose}>
     <div className={css.modal} onClick={(e) => e.stopPropagation()}>
       <h2 className={css.headline}>Edit transaction</h2>
-    <div>
-  <p style={{ color: transaction?.type === "income" ? "green" : "gray" }}>
+    <div className={css.text_div}>
+  <p style={{ color: transaction?.type === "income" ? "#FFB627" : "#e0e0e0" }} className={css.text}>
   Income
 </p>
-<p>/</p>
-<p style={{ color: transaction?.type === "expense" ? "red" : "gray" }}>
+<p className={css.text}>/</p>
+<p style={{ color: transaction?.type === "expense" ? "#FF868D" : "#e0e0e0" }} className={css.text}>
   Expense
 </p>
 </div>

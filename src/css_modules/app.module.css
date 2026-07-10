@@ -163,3 +163,13 @@
     padding: 0;
   }
 }
+@media screen and (min-width: 480px) and (max-width: 768px) {
+
+  .layout {
+  position: relative;
+  display: block;
+  flex: none;
+  padding: 0 32px 40px;
+  min-height: calc(100vh - 80px);
+}
+}

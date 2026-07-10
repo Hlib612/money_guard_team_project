@@ -67,7 +67,14 @@ export default function HomeModalTransaction({ isOn, setBalance }) {
 
   const addTransaction = () => {
     if (!formData.money || !formData.date || !formData.comment) {
-    alert("Feel all fields");
+    alert("Fill in all the fields.");
+    return;
+  }
+  if (isNaN(Number(formData.money))){
+    alert("Only numbers in money field");
+    return;
+  } else if(formData.money.length > 9){
+    alert("Numbers are to hight");
     return;
   }
     const newTransaction = { id: Date.now(), ...formData, type };
@@ -79,16 +86,16 @@ export default function HomeModalTransaction({ isOn, setBalance }) {
 
   const balance = transactions.reduce((total, transaction) => {
     if (transaction.type === 'income') {
-      return total + transaction.money;
+      return total + Number(transaction.money);
     } else if (transaction.type === 'expense') {
-      return total - transaction.money;
+      return total - Number(transaction.money);
     }
     return total;
   }, 0);
 
   useEffect(() => {
     setBalance(balance);
-  }, [balance, setBalance]);
+  }, [balance, setBalance, transactions]);
 
   return (
     <>
