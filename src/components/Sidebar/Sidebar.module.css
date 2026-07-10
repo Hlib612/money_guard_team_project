@@ -141,3 +141,18 @@
   padding: 0 20px;
 }
 }
+
+/* ─── Телефон ─────────────────────────────────────────────────────────── */
+
+@media screen and (max-width:767.98px) {
+  .formGraphic {
+    display: none;
+    z-index: -99;
+  }
+  .balanceBlock {
+    display: none;
+  }
+  .sidebar{
+    display: none;
+  }
+}

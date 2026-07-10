@@ -1,6 +1,6 @@
 import styles from './Sidebar.module.css'
-import homeIcon from '../../images/homeIcon.svg'
-import statsIcon from '../../images/statisticsIcon.svg'
+import homeIcon from '../../images/homeIcon1.svg'
+import statsIcon from '../../images/statisticsIcon2.svg'
 import SidebarWaves from './SidebarWaves'
 
 const Sidebar = () => {
